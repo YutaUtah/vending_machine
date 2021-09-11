@@ -40,7 +40,7 @@ function buttonCreator(productInfo){
 
 function createButton(){
     let allBtnDiv = document.getElementById("allBtnDiv");
-    let btnList = ["1","2","3","4","5","6","7","8","9","AC","0","←"];
+    let btnList = ["1","2","3","4","5","6","7","8","9","C","0","←"];
 
     for (let i=0; i < btnList.length; i++){
         let eachBtnElement = document.createElement("div");
@@ -58,7 +58,7 @@ function createButton(){
         actualBtnElement.classList.add("btn", "btn-primary")
         actualBtnElement.innerHTML = btnList[i]
         let clickFunction = "selectNumber(" + btnList[i] + ")";
-        if (btnList[i] === "AC"){
+        if (btnList[i] === "C"){
             clickFunction = "acClear()"
         }
         else if (btnList[i] === "←"){
