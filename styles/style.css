@@ -1,23 +1,10 @@
 /* ここからCSSを記述してください。 */
-
-.color-snow{
-    background-color: snow;
+.shrink-width{
+    width: 60%;
+    border: solid;
 }
-
-.color-blanchedalmond{
-    background-color: blanchedalmond;
-}
-
-.color-thistle{
-    background-color: thistle;
-}
-
-.light-blue { 
-	background-color: #a6e4e7; 
-}
-
-.color-thistle-dense{
-    background-color: rgb(173, 125, 173)
+.header-height{
+    height:30%;
 }
 
 .deplete-animation{
