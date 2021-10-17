@@ -1,7 +1,4 @@
-// ここから書いてください。
-//to do
 //右上のdesplayに右のボタンでクリックされた番号、商品名、値段が表示される
-
 //productの状態を設定
 class Product {
     constructor(name, price, imgUrl){
@@ -11,20 +8,32 @@ class Product {
     }
 }
 
+let product1 = new Product("cafelatte", "$4.50", 'images/beer_garden.jpeg');
+let product2 = new Product("cafelatte", "$4.50", 'images/birthday-surprise.jpeg');
+let product3 = new Product("cafelatte", "$4.50", 'images/rainy_tokyo_station.png');
+let product4 = new Product("cafelatte", "$4.50", 'images/sexy_kristen.png');
+let product5 = new Product("cafelatte", "$4.50", 'images/yushima-tenmangu.jpeg');
+
+const productList = [product1, product2, product3, product4, product5]
 
 //productのリストを受け取って、各プロダクトの番号・製品名・価格・画像のリストのリストを返す
 //outputイメージ--->[[number1, name1, price1, img1],[number2, name2, price2, img2]]
-function getProductInfo(productLists){
+function getProductInfo(productList){
     let output = [];
-    for (let i = 0; i < productLists.length; i++){
+    for (let i = 0; i < productList.length; i++){
         let innerList = []
         innerList.push(i+1);
-        innerList.push(productLists[i].name);
-        innerList.push(productLists[i].price);
-        innerList.push(productLists[i].imgUrl);
+        innerList.push(productList[i].name);
+        innerList.push(productList[i].price);
+        innerList.push(productList[i].imgUrl);
         output.push(innerList)
     }
     return output
+}
+
+function showProductInfo(productList, productIndex){
+    infoList = getProductInfo(productList)
+    return infoList[productIndex-1][3]
 }
 
 //右半分
@@ -43,6 +52,7 @@ function createButton(){
     let btnList = ["1","2","3","4","5","6","7","8","9","C","0","←"];
 
     for (let i=0; i < btnList.length; i++){
+        // create div and idName(button1, button4 etc...)
         let eachBtnElement = document.createElement("div");
         eachBtnElement.classList.add("col-4", "text-center", "py-2");
         if (btnList[i] === "←"){
@@ -51,6 +61,7 @@ function createButton(){
         }
         else{
             let idName = "button" + btnList[i];
+            // setting id attribute i.e. id=button1 etc...
             eachBtnElement.setAttribute("id", idName);
         }
 
@@ -71,14 +82,12 @@ function createButton(){
     }
 }
 
-
-
-let picture1 = new Product("cafelatte", "$4.50", 'images/beer_garden.jpeg');
-let picture2 = new Product("cafelatte", "$4.50", 'images/birthday-surprise.jpeg');
-let picture3 = new Product("cafelatte", "$4.50", 'images/rainy_tokyo_station.png');
-let picture4 = new Product("cafelatte", "$4.50", 'images/sexy_kristen.png');
-let picture5 = new Product("cafelatte", "$4.50", 'images/yushima-menmangu.jpeg');
-
-const pictureList = [picture1, picture2, picture3, picture4, picture5]
-
 createButton();
+
+function selectNumber(num){
+    pictureFrameElement = document.getElementById("pic-screen")
+    pictureElement = document.createElement("img")
+    pictureElement.src = showProductInfo(productList, num)
+    pictureFrameElement.appendChild(pictureElement)
+}
+
