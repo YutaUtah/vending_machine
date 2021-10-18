@@ -33,20 +33,12 @@ function getProductInfo(productList){
 
 function showProductInfo(productList, productIndex){
     infoList = getProductInfo(productList)
+    console.log(infoList)
     return infoList[productIndex-1][3]
 }
 
 //右半分
 //productInfoを受け取って、ボタンを作成
-function buttonCreator(productInfo){
-    let outerDiv = document.getElementById("btnOuter");
-    for (let i = 0; i < productInfo.length; i++){
-        outerDiv.innerHTML +=
-        `<button class="btn btn-outline-warning col-3 m-1 font-weight-bold" id="buttonElement">${productInfo[i][0]}</button>`
-    }
-    return outerDiv + "</div></div></div>"
-}
-
 function createButton(){
     let allBtnDiv = document.getElementById("allBtnDiv");
     let btnList = ["1","2","3","4","5","6","7","8","9","C","0","←"];
@@ -84,10 +76,18 @@ function createButton(){
 
 createButton();
 
+
+
 function selectNumber(num){
-    pictureFrameElement = document.getElementById("pic-screen")
+    let pictureFrameElement = document.getElementById("pic-screen")
+    pictureFrameElement.innerHTML = ""
+    pictureFrameElement.innerHTML += `<img src="${showProductInfo(productList, num)}" alt= "Responsive Image" class="w-100 h-100" id="imgItem">`
+    console.log(showProductInfo(productList, num))
     pictureElement = document.createElement("img")
-    pictureElement.src = showProductInfo(productList, num)
-    pictureFrameElement.appendChild(pictureElement)
+    pictureFrameElement.append(pictureElement)
+
 }
+// console.log(productList)
+// console.log(getProductInfo(productList))
+// console.log(showProductInfo(productList, 0))
 
